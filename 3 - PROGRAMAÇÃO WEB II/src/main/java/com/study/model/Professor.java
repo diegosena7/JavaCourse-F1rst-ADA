@@ -31,5 +31,4 @@ public class Professor {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "titular")
     private Disciplina disciplina;
-
 }

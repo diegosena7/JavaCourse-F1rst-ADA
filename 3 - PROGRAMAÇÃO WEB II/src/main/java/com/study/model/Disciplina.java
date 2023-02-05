@@ -29,10 +29,6 @@ public class Disciplina {
 
     private String nomeTitular;
 
-//    @OneToOne
-//    @JoinColumn(name = "titular")
-//    private Professor titular;
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "titular")
     private Professor titular;

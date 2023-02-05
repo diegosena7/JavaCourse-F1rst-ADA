@@ -85,4 +85,15 @@ public class AlunoService {
 
         return mapper.toResponse(listOfEntities);
     }
+
+    public AlunoResponse updateProfessor(int idProfessor, int idTutor) {
+        log.info("Updating aluno idProfessor: {}, idProfessor: {}", idProfessor, idTutor);
+
+        var aluno = repository.findById(idProfessor).orElseThrow(() -> new EntityNotFoundException("Professor not found"));
+        var professorTutor = repository.findById(idTutor).orElseThrow(() -> new EntityNotFoundException("Tutor not found"));
+        aluno.setTutor(professorTutor.getTutor());
+        repository.save(aluno);
+
+        return mapper.toResponse(aluno);
+    }
 }

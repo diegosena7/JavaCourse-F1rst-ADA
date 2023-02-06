@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonIgnoreProperties
 public class DisciplinaResponse {
+
     private Integer id;
     private String nome;
     private String descricao;

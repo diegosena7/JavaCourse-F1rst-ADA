@@ -86,7 +86,7 @@ public class ProfessorController {
     }
 
     @GetMapping("{id}/disciplina")
-    public ResponseEntity<List<DisciplinaResponse>> getDisciplinaByProfessor(@PathVariable("id") int id) {
+    public ResponseEntity<DisciplinaResponse> getDisciplinaByProfessor(@PathVariable("id") int id) {
 
         final var response = disciplinaService.getDisciplinaByProfessor(id);
 

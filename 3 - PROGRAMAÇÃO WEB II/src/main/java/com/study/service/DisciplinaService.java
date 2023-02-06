@@ -1,5 +1,6 @@
 package com.study.service;
 
+import com.study.dto.v3.DisciplinaRequest;
 import com.study.dto.v3.DisciplinaResponse;
 import com.study.mapper.DisciplinaMapper;
 import com.study.model.Disciplina;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -28,11 +30,11 @@ public class DisciplinaService {
         return disciplinaMapper.toResponse(disciplinaById);
     }
 
-    public List<DisciplinaResponse> getDisciplinaByProfessor(int idProfessor) {
+    public DisciplinaResponse getDisciplinaByProfessor(int idProfessor) {
         log.info("Getting professor by professor-id: {}", idProfessor);
 
         var professorOptional = professorRepository.findById(idProfessor).orElseThrow(() -> new EntityNotFoundException("Professor not found"));
-        List<Disciplina> disciplinaByProf = disciplinaRepository.findDisciplinaByProfessor(professorOptional);
+        Disciplina disciplinaByProf = disciplinaRepository.findByDisciplinaByProfessor(idProfessor);
 
         return disciplinaMapper.toResponse(disciplinaByProf);
     }
@@ -48,5 +50,14 @@ public class DisciplinaService {
         disciplinaRepository.save(disciplinaEntity);
 
         return disciplinaMapper.toResponse(disciplinaEntity);
+    }
+
+    public DisciplinaResponse insertDisciplina(DisciplinaRequest disciplinaRequest) {
+        Objects.requireNonNull(disciplinaRequest, "request must not be null");
+
+        log.info("Saving professor - {}", disciplinaRequest);
+        var save = disciplinaMapper.toEntity(disciplinaRequest);
+        disciplinaRepository.save(save);
+        return disciplinaMapper.toRequestForResponse(disciplinaRequest);
     }
 }

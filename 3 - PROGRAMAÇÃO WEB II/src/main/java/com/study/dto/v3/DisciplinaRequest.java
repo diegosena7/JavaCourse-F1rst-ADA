@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Data
 @Builder
@@ -13,6 +14,10 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @JsonIgnoreProperties
 public class DisciplinaRequest {
-    @NotBlank(message = "ID must be not empty or null")
+
     private Integer id;
+
+    private String nome;
+    private String descricao;
+    private String nomeTitular;
 }

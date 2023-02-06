@@ -29,7 +29,7 @@ public class Disciplina {
 
     private String nomeTitular;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "titular")
     private Professor titular;
 

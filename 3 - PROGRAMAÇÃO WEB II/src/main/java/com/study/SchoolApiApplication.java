@@ -6,14 +6,11 @@ import lombok.*;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
 
-import javax.transaction.*;
-
 @SpringBootApplication
 @RequiredArgsConstructor
 public class SchoolApiApplication implements CommandLineRunner{
-
-	private final AlunoRepository alunoRepository;
-	private final ProfessorRepository professorRepository;
+	private final StudentRepository studentRepository;
+	private final TeacherRepository teacherRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SchoolApiApplication.class, args);
@@ -22,32 +19,31 @@ public class SchoolApiApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		var professor1 =
-				Professor.builder()
+				Teacher.builder()
 						.name("Jose")
 						.email("jose@test.com")
 						.cpf("050.418.820-88")
 						.build();
 		var professor2 =
-				Professor.builder()
+				Teacher.builder()
 						.name("Maia")
 						.email("maria@test.com")
 						.cpf("744.388.770-16")
 						.build();
 
-		professorRepository.save(professor1);
-		professorRepository.save(professor2);
-
+		teacherRepository.save(professor1);
+		teacherRepository.save(professor2);
 
 		var aluno1 =
-				Aluno.builder()
+				Student.builder()
 						.name("AlunoX")
 						.build();
 		var aluno2 =
-				Aluno.builder()
+				Student.builder()
 						.name("AlunoY")
 						.build();
 
-		alunoRepository.save(aluno1);
-		alunoRepository.save(aluno2);
+		studentRepository.save(aluno1);
+		studentRepository.save(aluno2);
 	}
 }

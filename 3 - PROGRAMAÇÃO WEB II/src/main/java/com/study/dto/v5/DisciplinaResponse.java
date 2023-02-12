@@ -1,4 +1,4 @@
-package com.study.dto;
+package com.study.dto.v5;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
@@ -8,10 +8,15 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties
-public class ErrorMessageDTO {
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String field;
+public class DisciplinaResponse {
+
+    private int id;
+
+    private String name;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String message;
+    private String titular;
+
+    private String dateTime;
+
 }

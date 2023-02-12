@@ -1,23 +1,20 @@
 package com.study.view.rs.v6;
 
 
-import com.study.dto.v3.AlunoRequest;
-import com.study.dto.v3.AlunoResponse;
-import com.study.dto.v3.ProfessorResponse;
-import com.study.dto.v3.TutorResponse;
-import com.study.service.AlunoService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.study.dto.v3.*;
+import com.study.dto.v4.*;
+import com.study.service.*;
+import lombok.*;
+import lombok.extern.slf4j.*;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.List;
+import javax.validation.*;
+import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/alunos")
+@RequestMapping("/v2/alunos")
 @Slf4j
 public class AlunoController {
 
@@ -56,12 +53,11 @@ public class AlunoController {
                 .body(response);
     }
 
-    @PatchMapping("/{id}/tutor/{idTutor}")
-    public ResponseEntity<AlunoResponse> updateProfessor(@PathVariable("id") int idDisciplina, @PathVariable("idTutor") int idTutor) {
-        final var response = service.updateProfessor(idDisciplina, idTutor);
+    @GetMapping(path="/activity")
+    public ResponseEntity<TodoDto> saveRandomTodo() {
 
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(response);
+        final TodoDto dto = service.generateRandomTodo();
+
+        return ResponseEntity.ok(dto);
     }
 }

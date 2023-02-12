@@ -1,8 +1,8 @@
 package com.study.configuration;
 
-import com.study.*;
 import com.study.dto.*;
 import org.springframework.context.annotation.*;
+import org.springframework.web.client.*;
 
 import java.util.*;
 
@@ -10,13 +10,12 @@ import java.util.*;
 public class SchoolConfiguration {
 
     @Bean
-    public Map<Integer, ColorDTO> corRepository() {
+    public Map<Integer, CorDto> corRepository() {
         return new HashMap<>();
     }
 
     @Bean
-    public Employee employee() {
-        return new Employee("Jose");
+    public RestTemplate restTemplate() {
+        return new RestTemplate(); //REST client
     }
-
 }

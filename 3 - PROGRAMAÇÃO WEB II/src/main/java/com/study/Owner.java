@@ -7,7 +7,9 @@ import org.springframework.stereotype.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Component // @Service @Repository @Controller @RestController
+@Component //@Service @Repository @Controller @RestController
 public class Owner {
+
     private String name;
+
 }

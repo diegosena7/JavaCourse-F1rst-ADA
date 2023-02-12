@@ -1,4 +1,4 @@
-package com.study.dto;
+package com.study.dto.v5;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
@@ -8,7 +8,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties
-public class TutorResponseDTO {
-    private String tutor;
-    private String updated;
+public class TitularResponse {
+
+    private String titular;
+
+    private String atualizacao;
 }

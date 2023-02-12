@@ -1,4 +1,4 @@
-package com.study.dto;
+package com.study.dto.v4;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
@@ -8,7 +8,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties
-public class ColorDTO {
-    private int id;
+public class TodoDto {
+
+    @JsonProperty(value="activity")
     private String description;
+
 }

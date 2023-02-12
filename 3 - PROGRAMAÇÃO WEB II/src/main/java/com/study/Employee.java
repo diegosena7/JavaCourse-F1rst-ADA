@@ -7,5 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
+
     private String name;
 }

@@ -1,75 +1,58 @@
 package com.study.mapper;
 
 
-import com.study.dto.v3.*;
-import com.study.model.Disciplina;
-import com.study.model.Professor;
-import org.springframework.stereotype.Service;
+import com.study.dto.v5.*;
+import com.study.model.*;
+import org.springframework.stereotype.*;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import java.time.*;
+import java.time.format.*;
+import java.util.*;
+import java.util.stream.*;
 
-@Service
+@Component
 public class DisciplinaMapper {
 
+    public List<DisciplinaResponse> toResponse(List<Disciplina> listOfEntities) {
 
-    public List<DisciplinaResponse> toResponse(List<Disciplina> disciplinaResponse) {
+        if (Objects.isNull(listOfEntities)) return new ArrayList<>();
 
-        Objects.requireNonNull(disciplinaResponse, "d must not be null");
-
-        return disciplinaResponse.stream()
+        return listOfEntities.stream()
                 .map(this::toResponse)
                 .collect(Collectors.toList());
+
     }
 
     public DisciplinaResponse toResponse(Disciplina entity) {
 
-        Objects.requireNonNull(entity, "entity must not be null");
+        if (Objects.isNull(entity)) return null;
+
+        var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss");
 
         var response =
                 DisciplinaResponse.builder()
-                        .id(entity.getId())
-                        .nomeTitular(entity.getNomeTitular())
-                        .descricao(entity.getDescricao())
-                        .build();
-
-        if (Objects.nonNull(entity.getId())) {
-            response.setId(entity.getId());
-        }
-        return response;
-    }
-
-    public Disciplina toEntity(DisciplinaRequest disciplinaRequest){
-        if (Objects.isNull(disciplinaRequest)) {
-            return null;
-        } else {
-            return Disciplina.builder()
-                    .name(disciplinaRequest.getNome())
-                    .descricao(disciplinaRequest.getDescricao())
-                    .titular(Professor.builder()
-                            .cpf("373.856.168-44")
-                            .id(3)
-                            .email("jeff@gmail.com")
-                            .build())
+                    .id(entity.getId())
+                    .name(entity.getName())
+                    .dateTime(formatter.format(entity.getDateTime()))
                     .build();
+
+        if (Objects.nonNull(entity.getTitular())) {
+            response.setTitular(entity.getTitular().getName());
         }
+
+        return response;
     }
 
-    public DisciplinaResponse toRequestForResponse(DisciplinaRequest disciplinaRequest) {
+    public TitularResponse toResponse(Professor entity) {
 
-        Objects.requireNonNull(disciplinaRequest, "entity must not be null");
+        if (Objects.isNull(entity)) return null;
 
-        var response =
-                DisciplinaResponse.builder()
-                        .id(disciplinaRequest.getId())
-                        .nomeTitular(disciplinaRequest.getNomeTitular())
-                        .descricao(disciplinaRequest.getDescricao())
-                        .build();
+        var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss");
 
-        if (Objects.nonNull(disciplinaRequest.getId())) {
-            response.setId(disciplinaRequest.getId());
-        }
-        return response;
+        return TitularResponse.builder()
+                .titular(entity.getName())
+                .atualizacao(formatter.format(LocalDateTime.now()))
+                .build();
+
     }
 }

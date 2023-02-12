@@ -1,20 +1,16 @@
-package com.study.view.rs.v6;
+package com.study.view.rs.v7;
 
-import com.study.dto.v3.AlunoResponse;
-import com.study.dto.v3.DisciplinaResponse;
-import com.study.dto.v3.ProfessorRequest;
-import com.study.dto.v3.ProfessorResponse;
-import com.study.service.AlunoService;
-import com.study.service.DisciplinaService;
-import com.study.service.ProfessorService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.study.dto.v3.*;
+import com.study.dto.v5.*;
+import com.study.repository.projection.*;
+import com.study.service.*;
+import lombok.*;
+import lombok.extern.slf4j.*;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.List;
+import javax.validation.*;
+import java.util.*;
 
 /**
  * Using service with repository
@@ -22,9 +18,9 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v5/professores")
+@RequestMapping("/v6/professores")
 @Slf4j
-public class ProfessorController {
+public class ProfessorControllerV6 {
 
     private final ProfessorService service;
     private final AlunoService alunoService;
@@ -85,10 +81,18 @@ public class ProfessorController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("{id}/disciplina")
-    public ResponseEntity<DisciplinaResponse> getDisciplinaByProfessor(@PathVariable("id") int id) {
+    @GetMapping("/{id}/disciplina")
+    public ResponseEntity<DisciplinaResponse> getDisciplina(@PathVariable("id") int id) {
 
-        final var response = disciplinaService.getDisciplinaByProfessor(id);
+        final var response = disciplinaService.getDisciplinaByProfessorId(id);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{id}/projection")
+    public ResponseEntity<ProfessorDtoProjection> getDisciplinaByProfessorProjection(@PathVariable("id") int id) {
+
+        final var response = service.getDisciplinaByProfessorId(id);
 
         return ResponseEntity.ok(response);
     }

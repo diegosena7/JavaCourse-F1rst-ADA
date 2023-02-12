@@ -13,9 +13,9 @@ import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/alunos/v5")
+@RequestMapping("/v1/alunos")
 @Slf4j
-public class AlunoControllerV5 {
+public class AlunoControllerV1 {
 
     private final AlunoService service;
 

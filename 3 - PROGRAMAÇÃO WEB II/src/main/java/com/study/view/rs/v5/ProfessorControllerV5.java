@@ -16,7 +16,7 @@ import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v5/professores/v5")
+@RequestMapping("/v5/professores")
 @Slf4j
 public class ProfessorControllerV5 {
 

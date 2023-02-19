@@ -1,4 +1,6 @@
-package org.example;
+package com.br.dsena7.desafio1;
+
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -6,14 +8,26 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Animal implements Comparable<Animal> {
+
+    private Double alturaAnimal;
+    private Integer qtdPatas;
+    private Double pesoAnimal;
+    private String alimento;
+    private String locomocao;
+    private String reproducao;
+
+    @Override
+    public int compareTo(Animal o) {
+        return 0;
+    }
+
+    public static void main(String[] args) {
         Animal cachorro = new Animal(1.5, 4, 3.5, "Ração", "Patas", "Mamífero");
         Animal gato = new Animal(0.8, 4, 1.2, "Ração", "Patas", "Mamífero");
         Animal papagaio = new Animal(0.5, 2, 0.8, "Alpiste", "Asas", "Ovípero");
@@ -45,3 +59,5 @@ public class App
         System.out.println("Maior peso: " + exercicio3);
     }
 }
+
+

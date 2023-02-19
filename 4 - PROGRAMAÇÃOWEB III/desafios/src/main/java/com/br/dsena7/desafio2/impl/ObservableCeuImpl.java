@@ -1,9 +1,12 @@
-package com.br.dsena7.desafio2;
+package com.br.dsena7.desafio2.impl;
+
+import com.br.dsena7.desafio2.interfaces.ObservableCeu;
+import com.br.dsena7.desafio2.interfaces.ObserverCeu;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObservableCeuImpl implements ObservableCeu{
+public class ObservableCeuImpl implements ObservableCeu {
 
     private List<ObserverCeu> observerList;
     private String msg;

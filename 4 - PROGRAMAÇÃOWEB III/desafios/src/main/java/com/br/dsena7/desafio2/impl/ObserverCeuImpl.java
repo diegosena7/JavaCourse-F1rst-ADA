@@ -1,6 +1,9 @@
-package com.br.dsena7.desafio2;
+package com.br.dsena7.desafio2.impl;
 
-public class ObserverCeuImpl implements ObserverCeu{
+import com.br.dsena7.desafio2.interfaces.ObservableCeu;
+import com.br.dsena7.desafio2.interfaces.ObserverCeu;
+
+public class ObserverCeuImpl implements ObserverCeu {
 
     private ObservableCeu obs;
     private String nome;

@@ -1,5 +1,6 @@
 package com.br.dsena7.desafio1;
 
+import com.br.dsena7.model.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -13,8 +14,9 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @ToString
-public class Animal implements Comparable<Animal> {
+public class Desafio1Main implements Comparable<Desafio1Main> {
 
+    private String nome;
     private Double alturaAnimal;
     private Integer qtdPatas;
     private Double pesoAnimal;
@@ -23,17 +25,18 @@ public class Animal implements Comparable<Animal> {
     private String reproducao;
 
     @Override
-    public int compareTo(Animal o) {
+    public int compareTo(Desafio1Main o) {
         return 0;
     }
 
     public static void main(String[] args) {
-        Animal cachorro = new Animal(1.5, 4, 3.5, "Ração", "Patas", "Mamífero");
-        Animal gato = new Animal(0.8, 4, 1.2, "Ração", "Patas", "Mamífero");
-        Animal papagaio = new Animal(0.5, 2, 0.8, "Alpiste", "Asas", "Ovípero");
-        Animal cacatua = new Animal(1.7, 2, 1.5, "Alpiste", "Asas", "Ovípero");
-        Animal girafa = new Animal(5.3, 2, 30.0, "Alpiste", "Asas", "Herbívoro");
-        Animal zebra = new Animal(2.3, 4, 20.0, "Alpiste", "Asas", "Herbívoro");
+
+        Cachorro cachorro = new Cachorro("Cachorro", 1.5, 4, 3.5, "Ração", "Patas", "Mamífero");
+        Gato gato = new Gato("Gato", 0.8, 4, 1.2, "Ração", "Patas", "Mamífero");
+        Papagaio papagaio = new Papagaio("Papagaio", 0.5, 2, 0.8, "Alpiste", "Asas", "Ovípero");
+        Cacatua cacatua = new Cacatua("Cacatua", 1.7, 2, 1.5, "Alpiste", "Asas", "Ovípero");
+        Girafa girafa = new Girafa("Girafa", 5.3, 2, 30.0, "Alpiste", "Asas", "Herbívoro");
+        Zebra zebra = new Zebra("Zebra", 2.3, 4, 20.0, "Alpiste", "Asas", "Herbívoro");
 
         List<Animal> animais = new ArrayList<>(List.of(cachorro, gato, zebra, girafa, papagaio, cacatua));
 

@@ -17,7 +17,7 @@ public class ObserverCeuImpl implements ObserverCeu {
     @Override
     public void atualizar() {
         String msg = obs.getMsg(this);
-        if(msg == null) System.out.println("[MSG] Não há mensagens");
+        if(msg == null) System.out.println("O eclipse lunar terminou");
 
         else System.out.println(msg + ": " + this.nome);
     }
